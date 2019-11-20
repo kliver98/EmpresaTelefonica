@@ -1,9 +1,12 @@
 package vista;
 
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
@@ -11,8 +14,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
+import modelo.consultarYconectar;
 
-public class MainController {
+public class MainController implements Initializable{
 	
 	@FXML
 	private ComboBox<String> cbTipoProducto;
@@ -20,6 +24,15 @@ public class MainController {
 	private TextField tfCedula;
 	@FXML
 	private TextArea taObservacion;
+	
+	private consultarYconectar bd;
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		bd = new consultarYconectar();
+		bd.conectarBD("P09551_1_25", "P09551_1_25");
+		
+	}
 	
 	public void botonCrear(ActionEvent evento) {
 		//Este metodo es el que se llama cuando se da clic
